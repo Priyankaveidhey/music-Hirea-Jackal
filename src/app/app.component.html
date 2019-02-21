@@ -1,0 +1,151 @@
+<div class="container">
+  <div class="row">
+    <img class="logo" src="../assets/logo1.png" alt="Hire jackal">
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h3 class="text-center font-weight-bold">Music Track</h3>
+    </div>
+    <div class="col-md-6">
+      <h3 class="text-center font-weight-bold">Track's Genre</h3>
+    </div>
+  </div>
+  <div class="col-md-5 my-3">
+    <div class="right">
+      <form id="search" [FormGroup]="myForm" (ngSubmit)="searchData(myForm)" #myForm="ngForm">
+        <input id="searchVal" #search type="search" placeholder="Search Title" class="filled">
+      </form>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <table class="table" mdbtable="">
+
+        <tbody>
+          <!---->
+          <tr *ngFor="let track of musicTrackDetails; let i = index" (click)="updateTrack(genre.id)">
+            <th scope="row">{{i+1}}</th>
+            <td>{{track.name}}</td>
+            <td>{{track.genreName}}</td>
+            <td>
+              <rating [(ngModel)]="track.rating" class="rating" fullIcon="★" emptyIcon="☆">
+              </rating>
+            </td>
+
+            <td (click)="deleteTrack(track.id)"><a><img src="../assets/rsz_delete.png"></a></td>
+          </tr>
+
+        </tbody>
+      </table>
+
+      <div class="col-md-6 mx-auto my-3">
+        <button type="button" mdbBtn color="default" class="px-5" rounded="true" data-toggle="modal"
+          data-target="#addMusicTrackModal" (click)="musictrack.show()" mdbWavesEffect>Add New Track</button>
+
+      </div>
+      <div class="col-md-6 mx-auto my-3">
+        <nav aria-label="Page navigation example">
+          <ul class="pagination pg-blue">
+            <li class="page-item"><a class="page-link" mdbWavesEffect>Page 1</a></li>
+            <li class="page-item active">
+              <a class="page-link  #e0e0e0 grey lighten-1 black-text" mdbWavesEffect>Page 2 <span
+                  class="sr-only">(current)</span></a>
+            </li>
+            <li class="page-item"><a class="page-link" mdbWavesEffect>Page 3</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+
+    <div class="col-md-6">
+      <table class="table" mdbtable="">
+
+        <tbody>
+          <!---->
+          <tr *ngFor="let genre of musicGenreDetails; let i = index" style="height:62px;" (click)="musicgenre.show()">
+            <th scope="row">{{i+1}}</th>
+            <td>{{genre.name}}</td>
+            <td (click)="deleteGenre(genre.id)" class="text-center"><a><img src="../assets/rsz_delete.png"></a></td>
+          </tr>
+
+        </tbody>
+      </table>
+      <div class="col-md-6 mx-auto my-3">
+        <button type="button" mdbBtn color="default" class="px-5" rounded="true" data-toggle="modal"
+          data-target="#addGenreModal" (click)="musicgenre.show();genreName.id=''" mdbWavesEffect>Add New
+          Genre</button>
+      </div>
+      <div class="text-right">
+        <h5>Made By Prasannjeet</h5>
+      </div>
+    </div>
+  </div>
+
+  <div mdbModal #musictrack="mdbModal" class="modal fade left" id="addMusicTrackModal" tabindex="-1" role="dialog"
+    aria-labelledby="addMusicTrackModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+
+          <h4 class="modal-title w-100 font-weight-bold">Add Track</h4>
+
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="musictrack.hide()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body mx-3">
+          <div class="md-form mb-5">
+            <input type="email" id="defaultForm-email" class="form-control" [(ngModel)]="musicTrack.name" mdbInput>
+            <label data-error="wrong" data-success="right" for="defaultForm-email">Track Name</label>
+          </div>
+
+          <mdb-select [options]="genreNameSelect" [(ngModel)]="musicTrack.genreName" [multiple]="true"
+            placeholder="Choose your option" label="Add Genre">
+          </mdb-select>
+
+          <div class="addtrackmodal">
+            <p>Rating</p>
+            <rating [(ngModel)]="musicTrack.rating" class="rating" fullIcon="★" emptyIcon="☆">
+            </rating>
+          </div>
+
+        </div>
+        <div class="modal-footer d-flex justify-content-center">
+          <button mdbBtn color="default" class="waves-light" (click)="addTrack()" mdbWavesEffect>Add</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div mdbModal #musicgenre="mdbModal" class="modal fade left" id="addGenreModal" tabindex="-1" role="dialog"
+    aria-labelledby="addGenreModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+
+          <div *ngIf="genreName.id!=''; else editTemp">
+            <h4 class="modal-title w-100 font-weight-bold">Update Genre</h4>
+          </div>
+          <ng-template #editTemp>
+            <h4 class="modal-title w-100 font-weight-bold">Add Genre</h4>
+          </ng-template>
+
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="musicgenre.hide()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body mx-3">
+          <div class="md-form mb-5">
+            <input type="text" id="defaultForm-email" class="form-control" [(ngModel)]="genreName.name" #genre="ngModel"
+              mdbInput>
+            <label data-error="wrong" data-success="right" for="defaultForm-email">Genre Name</label>
+          </div>
+
+        </div>
+        <div class="modal-footer d-flex justify-content-center">
+          <button mdbBtn color="default" class="waves-light" mdbWavesEffect (click)="addGenre()">Add</button>
+        </div>
+      </div>
+    </div>
+  </div>
