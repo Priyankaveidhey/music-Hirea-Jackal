@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Built-By: aman_gr
+Build-Jdk: 10.0.2
+Implementation-Title: demo
+Implementation-Version: 1-0
+Implementation-Vendor-Id: com.example
+Implementation-Vendor: Pivotal Software, Inc.
+Implementation-URL: http://projects.spring.io/spring-boot/demo/
+Created-By: Maven Integration for Eclipse
+
