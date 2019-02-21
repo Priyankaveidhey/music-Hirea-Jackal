@@ -1,28 +1,37 @@
-# Music HireaJackal
-# Angular, Docker and Microservices
+# MdbAngularPro
 
-**NOTE**: If you're using Docker CE on Windows, remove the cAdvisor service defined at the bottom of the
-docker-compose.yml file before running the project. 
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.0-rc.5.
 
-To run the project (development mode):
+## Development server
 
-1. Install Docker CE for Mac or Windows (http://docker.com)
+Run `ng serve mdb-angular-pro` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-1. Install Angular CLI: `npm install @angular/cli -g`
+## Demo application
 
-1. Run `npm install` at the root of the project
+Run `ng serve mdb-demo` for a demo application build with MDB Angular Pro components.
 
-1. Run `npm install` in ./microservices/node
+## Code scaffolding
 
-1. Move back to the project root
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-1. Run `ng build`
+## Build
 
-1. Run `docker-compose build`
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-1. Run `docker-compose up`
+## Running unit tests
 
-1. Navigate to http://localhost
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-1. To see your container CPU utilization, memory, etc. visit the
-cAdvisor URL: http://localhost:8080
+## Running end-to-end tests
+
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+
+## Further help
+
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Remove demo application
+
+Type one of the below commands to remove demo application from this project:
+* npm run remove-demo-unix to remove demo application on UNIX based systems,
+* npm run remove-demo-windows to remove demo application on Windows systems.
