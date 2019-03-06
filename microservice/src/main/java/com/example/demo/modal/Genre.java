@@ -25,7 +25,7 @@ public class Genre
 
   @Column(name = "created_time")
   private Long createdTime = System.currentTimeMillis() / 1000;
-
+  //test data for build check
   @Column(name = "updated_time")
   private Long updatedtime = 0L;
 
